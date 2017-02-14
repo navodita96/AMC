@@ -1,0 +1,44 @@
+<div class=container>
+<button type="button" class="btn btn-info btn-lg" ng-click="goto()"><span class="glyphicon glyphicon-star"></span></button>
+
+
+     <form action="view">
+        <br>
+    Select your favorite fruit:
+    <select id="mySelect">
+      <option value="apple" selected >Select fruit</option>
+      <option value="apple">Apple</option>
+      <option value="orange">Orange</option>
+      <option value="pineapple">Pineapple</option>
+      <option value="banana">Banana</option>
+    </select>
+    </form>
+
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#mySelect").change(function(){
+            selected ="apple";
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                url: '/projectboard/view/',
+                data: {
+                       'fruit': selected
+                      },
+                success: function(result) {
+                        document.write(result)
+                        }
+        });
+      });
+    });
+    </script>
+
+
+
+
+
+
+    
+</div>
